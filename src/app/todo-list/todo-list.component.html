@@ -1,0 +1,21 @@
+<ul>
+  <li
+    *ngFor="let todo of todos; let i = index"
+    class="flex justify-between items-center mb-2"
+  >
+    <div *ngIf="editIndex !== i">
+      <span>{{ todo }}</span>
+      <button (click)="startEdit(i)" class="bg-blue-500 text-white rounded p-2 mr-2">Edit</button>
+      <button (click)="deleteTodo.emit(i)" class="bg-red-500 text-white rounded p-2">Remove</button>
+    </div>
+    <div *ngIf="editIndex === i" class="flex items-center">
+      <input
+        type="text"
+        [(ngModel)]="updatedTodo"
+        class="border rounded p-2 mr-2"
+      />
+      <button (click)="saveEdit(i)" class="bg-green-500 text-white rounded p-2 mr-2">Save</button>
+      <button (click)="cancelEdit()" class="bg-gray-500 text-white rounded p-2">Cancel</button>
+    </div>
+  </li>
+</ul>
